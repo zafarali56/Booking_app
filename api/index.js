@@ -1,11 +1,13 @@
-import express from "express";
+import express, { json } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "./models/User.js";
 
 const bcryptSalt = bcrypt.genSaltSync(10);
+const jwtSecret = "jshdjfh";
 
 dotenv.config();
 
@@ -40,14 +42,40 @@ app.get("/test", (req, res) => {
 
 app.post("/register", async (req, res) => {
   const { first, last, email, password } = req.body;
-  const userDocs = await User.create({
-    first,
-    last,
-    email,
-    password: bcrypt.hashSync(password, bcryptSalt),
-  });
+  try {
+    const userDocs = await User.create({
+      first,
+      last,
+      email,
+      password: bcrypt.hashSync(password, bcryptSalt),
+    });
+    res.json({ userDocs });
+  } catch (e) {
+    res.status(422).json(e);
+  }
+});
 
-  res.json({ userDocs });
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const userDocs = await User.findOne({ email });
+  if (userDocs) {
+    const passOK = bcrypt.compareSync(password, userDocs.password);
+    if (passOK) {
+      jwt.sign(
+        { email: userDocs.email, id: userDocs._id },
+        jwtSecret,
+        {},
+        (err, token) => {
+          if (err) throw err;
+          res.cookie("token", token).json("Pass matched");
+        }
+      );
+    } else {
+      res.status(422).json("Pass Unmatched");
+    }
+  } else {
+    res.json("Not found :( ");
+  }
 });
 
 // Start the server
