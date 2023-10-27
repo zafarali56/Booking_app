@@ -13,15 +13,21 @@ export default function LoginPage() {
   async function handleLoginSubmit(ev) {
     ev.preventDefault();
     try {
-      const data = await axios.post("/login", { email, password });
-      setUser(data);
-      alert("Login successfully");
-      setRedirect(true);
+      const response = await axios.post("/login", { email, password });
+
+      if (response.data && response.data.user) {
+        // Assuming that your user data is structured with a 'user' property
+        setUser(response.data.user);
+
+        alert("Login successfully");
+        setRedirect(true);
+      } else {
+        alert("Invalid response format from the server");
+      }
     } catch (e) {
       alert("Login failed");
     }
   }
-
   if (redirect) {
     return <Navigate to={"/"} />;
   }

@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "./models/User.js";
+import cookieParser from "cookie-parser";
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "jshdjfh";
@@ -16,6 +17,7 @@ const port = process.env.PORT || 4000; // Use process.env.PORT if available, def
 
 // Middleware
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
@@ -62,19 +64,35 @@ app.post("/login", async (req, res) => {
     const passOK = bcrypt.compareSync(password, userDocs.password);
     if (passOK) {
       jwt.sign(
-        { email: userDocs.email, id: userDocs._id },
+        {
+          email: userDocs.email,
+          id: userDocs._id,
+        },
         jwtSecret,
         {},
         (err, token) => {
           if (err) throw err;
-          res.cookie("token", token).json("Pass matched");
+          res.cookie("token", token).json({ user: userDocs });
         }
       );
     } else {
       res.status(422).json("Pass Unmatched");
     }
   } else {
-    res.json("Not found :( ");
+    res.status(404).json("User not found");
+  }
+});
+
+app.get("/profile", (req, res) => {
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+      const { first, last, email, _id } = await User.findById(userData.id);
+      res.json({ first, last, email, _id });
+    });
+  } else {
+    res.json(null);
   }
 });
 
