@@ -51,7 +51,7 @@ function AccountPage() {
       </nav>
       {subpage === "profile" && (
         <div className="text-center max-w-lg mx-auto">
-          logged in as {user.first} ({user.email})
+          logged in as {user.first} {user.last} ({user.email})
           <button onClick={logout} className="primary max-w-sm mt-2">
             {" "}
             Logout{" "}

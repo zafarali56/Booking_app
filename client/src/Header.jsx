@@ -75,7 +75,11 @@ export default function Header() {
             </svg>
           </div>
 
-          {!!user && <div>{user.first}</div>}
+          {!!user && (
+            <div>
+              {user.first} {user.last}
+            </div>
+          )}
         </Link>
       </div>
     </header>
