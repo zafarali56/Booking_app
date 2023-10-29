@@ -18,7 +18,7 @@ export default function Header() {
             clipRule="evenodd"
           />
         </svg>
-        <span className="font-bold text-xl">Zafar</span>
+        <span className="font-bold text-xl">Finder</span>
       </Link>
       <div className="flex gap-2 border border-gray-300 rounded-full py-2 p-4 shadow-md shadow-grey-300">
         <div className="p-2 font-bold">Anywhere</div>
