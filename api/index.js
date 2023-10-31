@@ -27,6 +27,7 @@ const port = process.env.PORT || 4000; // Use process.env.PORT if available, def
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(
   cors({
     credentials: true,
@@ -108,8 +109,6 @@ app.get("/profile", (req, res) => {
 app.post("/logout", (req, res) => {
   res.cookie("token", "").json(true);
 });
-
-console.log({ __dirname });
 
 app.post("/upload-by-link", async (req, res) => {
   const { link } = req.body;
