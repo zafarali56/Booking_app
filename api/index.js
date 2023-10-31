@@ -6,6 +6,15 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "./models/User.js";
 import cookieParser from "cookie-parser";
+import imageDownloader from "image-downloader";
+
+//temp
+import { URL, fileURLToPath } from "url";
+import path from "path";
+
+const currentModuleURL = new URL(import.meta.url);
+const currentModulePath = fileURLToPath(currentModuleURL);
+const __dirname = path.dirname(currentModulePath);
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "jshdjfh";
@@ -98,6 +107,21 @@ app.get("/profile", (req, res) => {
 
 app.post("/logout", (req, res) => {
   res.cookie("token", "").json(true);
+});
+
+console.log({ __dirname });
+
+app.post("/upload-by-link", async (req, res) => {
+  const { link } = req.body;
+  const newName = "photo" + Date.now() + ".jpg";
+  const dest = path.join(__dirname, "uploads", newName);
+
+  await imageDownloader.image({
+    url: link,
+    dest: dest,
+  });
+
+  res.json(dest);
 });
 
 // Start the server
