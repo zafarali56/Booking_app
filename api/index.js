@@ -7,6 +7,8 @@ import dotenv from "dotenv";
 import User from "./models/User.js";
 import cookieParser from "cookie-parser";
 import imageDownloader from "image-downloader";
+import multer from "multer";
+import fs from "fs";
 
 //temp
 import { URL, fileURLToPath } from "url";
@@ -121,6 +123,34 @@ app.post("/upload-by-link", async (req, res) => {
   });
 
   res.json(dest);
+});
+
+const photosMiddleware = multer({ dest: "uploads/" });
+app.post("/upload", photosMiddleware.array("photos", 100), (req, res) => {
+  const uploadedFiles = [];
+
+  for (let i = 0; i < req.files.length; i++) {
+    const { path, originalname } = req.files[i];
+
+    // Check if originalname is defined and not empty
+    if (originalname) {
+      const parts = originalname.split(".");
+      if (parts.length >= 2) {
+        const ext = parts[parts.length - 1];
+        const newPath = path + "." + ext;
+        fs.renameSync(path, newPath);
+        uploadedFiles.push(newPath.replace("uploads/", ""));
+      } else {
+        // Handle the case where the file name doesn't contain a dot (.) extension
+        return res.status(422).json({ error: "Invalid file name" });
+      }
+    } else {
+      // Handle the case where originalname is undefined or empty
+      return res.status(422).json({ error: "Missing file name" });
+    }
+  }
+
+  res.json(uploadedFiles);
 });
 
 // Start the server

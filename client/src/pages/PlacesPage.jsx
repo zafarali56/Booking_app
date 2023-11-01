@@ -31,6 +31,7 @@ export default function PlacesPage() {
       </>
     );
   }
+
   async function addPhotoByLink(ev) {
     ev.preventDefault();
     const { data: filename } = await axios.post("/upload-by-link", {
@@ -40,6 +41,25 @@ export default function PlacesPage() {
       return [...prev, filename];
     });
     setPhotoLink("");
+  }
+
+  function uploadPhoto(ev) {
+    const files = ev.target.files;
+    const data = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      data.append("photos", files[i]);
+    }
+
+    axios
+      .post("/upload", data, {
+        headers: { "Content-type": "multipart/form-data" },
+      })
+      .then((response) => {
+        const { data: filenames } = response;
+        setAddedPhotos((prev) => {
+          return [...prev, ...filenames];
+        });
+      });
   }
 
   return (
@@ -112,9 +132,9 @@ export default function PlacesPage() {
                   const filename = link.split("/").pop();
 
                   return (
-                    <div>
+                    <div className="h-32 flex">
                       <img
-                        className="rounded-2xl"
+                        className="rounded-2xl w-full object-cover position-center"
                         src={"http://localhost:4000/uploads/" + filename}
                         alt="description"
                       />
@@ -122,7 +142,13 @@ export default function PlacesPage() {
                   );
                 })}
 
-              <button className="flex items-center border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 mt-2 justify-center">
+              <label className=" flex h-30 cursor-pointer items-center border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 mt-2 justify-center">
+                <input
+                  type="file"
+                  multiple
+                  className="hidden"
+                  onChange={uploadPhoto}
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -138,7 +164,7 @@ export default function PlacesPage() {
                   />
                 </svg>
                 Upload
-              </button>
+              </label>
             </div>
 
             {preInput("Description", "About the place")}
