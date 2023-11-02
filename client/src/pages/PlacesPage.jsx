@@ -132,7 +132,7 @@ export default function PlacesPage() {
                   const filename = link.split("/").pop();
 
                   return (
-                    <div className="h-32 flex">
+                    <div className="h-32 flex" key={link}>
                       <img
                         className="rounded-2xl w-full object-cover position-center"
                         src={"http://localhost:4000/uploads/" + filename}
@@ -153,13 +153,13 @@ export default function PlacesPage() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
-                  class=" w-8 h-7"
+                  className=" w-8 h-7"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15"
                   />
                 </svg>
