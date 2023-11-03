@@ -175,7 +175,7 @@ app.post("/places", (req, res) => {
       owner: userData.id,
       title,
       address,
-      Photos: addedPhotos,
+      photos: addedPhotos,
       description,
       perks,
       extraInfo,
@@ -224,7 +224,7 @@ app.put("/places", async (req, res) => {
       placeDocs.set({
         title,
         address,
-        Photos: addedPhotos,
+        photos: addedPhotos,
         description,
         perks,
         extraInfo,
