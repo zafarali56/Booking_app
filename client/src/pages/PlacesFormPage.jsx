@@ -34,7 +34,7 @@ export default function PlacesFormPage() {
       setExtraInfo(data.extraInfo);
       setCheckIn(data.checkIn);
       setCheckOut(data.checkOut);
-      maxGuests(data.maxGuests);
+      setMaxGuests(data.maxGuests);
     });
   }, [id]);
 
