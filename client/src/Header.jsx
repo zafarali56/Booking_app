@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const { user } = useContext(UserContext);
   return (
-    <header className="flex justify-between">
+    <header className="flex flex-col md:flex-row sm:flex-row items-center justify-between p-4 bg-white">
       <Link to={"/"} href="" className="flex items-center gap-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ export default function Header() {
         </svg>
         <span className="font-bold text-xl">Finder</span>
       </Link>
-      <div className="flex gap-2 border border-gray-300 rounded-full py-2 p-4 shadow-md shadow-grey-300">
+      <div className="flex gap-2 border border-gray-300 rounded-full py-2 p-4 shadow-md sm:flex md:flex items-center shadow-grey-300">
         <div className="p-2 font-bold">Anywhere</div>
         <div className="border-l border-gray-300"></div>
         <div className="p-2 font-bold">Any week</div>
@@ -45,7 +45,7 @@ export default function Header() {
 
         <Link
           to={user ? "/account" : "/login"}
-          className="flex gap-2 border border-gray-300 rounded-full py-2 p-4 shadow-md shadow-grey-300"
+          className="flex gap-2 border border-gray-300 rounded-full py-2 p-4 shadow-md items-center shadow-grey-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@ export default function Header() {
             />
           </svg>
 
-          <div className="bg-gray-500 text-white rounded-full border-grey-500 overflow-hidden">
+          <div className="bg-gray-500 text-white rounded-full border-grey-500 overflow-hidden flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
