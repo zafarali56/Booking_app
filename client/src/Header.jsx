@@ -60,7 +60,7 @@ export default function Header() {
             />
           </svg>
 
-          <div className="bg-gray-500 text-white rounded-full border-grey-500 overflow-hidden flex items-center">
+          <div className="bg-gray-500 text-white rounded-full border-grey-500 flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
