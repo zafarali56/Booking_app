@@ -8,41 +8,45 @@ export default function Header() {
       <Link to={"/"} href="" className="flex items-center gap-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"
+          fill="none"
           viewBox="0 0 24 24"
-          fill="currentColor"
-          className="w-8 h-8"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6"
         >
           <path
-            fillRule="evenodd"
-            d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
-            clipRule="evenodd"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
           />
         </svg>
-        <span className="font-bold text-xl">Finder</span>
+
+        <span className="font-bold text-xl">Table Trove</span>
       </Link>
       <div className="flex gap-2 border border-gray-300 rounded-full py-2 p-4 shadow-md sm:flex md:flex items-center shadow-grey-300">
-        <div className="p-2 font-bold">Anywhere</div>
-        <div className="border-l border-gray-300"></div>
-        <div className="p-2 font-bold">Any week</div>
-        <div className="border-l border-gray-300"></div>
-        <div className="p-2 font-bold">Add guests</div>
+        <div className="flex border border-gray-400 rounded-full">
+          <div className="p-2 font-bold">Anywhere</div>
+          <div className="border-l border-gray-400 rounded-full"></div>
+          <div className="p-2 font-bold">Any week</div>
+          <div className="border-l border-gray-400 rounded-full"></div>
+          <div className="p-2 font-bold">Add guests</div>
 
-        <button className="bg-primary text-white p-3 rounded-full">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-4 h-4"
-          >
-            <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
-            <path
-              fillRule="evenodd"
-              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
-
+          <button className="bg-primary text-white p-3 rounded-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-4 h-4"
+            >
+              <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
+              <path
+                fillRule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
         <Link
           to={user ? "/account" : "/login"}
           className="flex gap-2 border border-gray-300 rounded-full py-2 p-4 shadow-md items-center shadow-grey-300"
