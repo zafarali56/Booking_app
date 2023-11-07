@@ -44,7 +44,7 @@ export default function IndexPage() {
               {place.address}
             </h3>
             <div className="mt-2">
-              <span className="font-bold">{place.price}</span> Rupee per night
+              <span className="font-bold">{place.price}</span>$ per night
             </div>
           </div>
         ))}
