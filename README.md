@@ -32,7 +32,9 @@ Installation
 
     bash
 
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/zafarali56/Booking_app.git
+
+
 cd your-repo
 
 Install dependencies for the frontend and backend:
