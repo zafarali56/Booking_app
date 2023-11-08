@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const { user } = useContext(UserContext);
   return (
-    <header className="bg-white p-7 md:flex-row sm:flex-row flex flex-col items-center justify-between">
+    <header className="bg-white p-1 md:flex-row sm:flex-row flex flex-col items-center justify-between">
       <Link
         to={"/"}
         href=""
-        className="flex p-4 items-center text-center gap-2 shrink-0"
+        className="flex p-2 items-center text-center gap-2 shrink-0"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
