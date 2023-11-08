@@ -1,26 +1,28 @@
 export default function BookingWidget({ place }) {
   return (
-    <div className="grid  text-center bg-gray-100 shadow shadow-gray-500 p-4 rounded-xl">
+    <div className="bg-gray-100 p-4 rounded-xl shadow shadow-gray-500">
       <div className="text-2xl text-center">
         Price: {place.price}$ / per night
       </div>
-      <div className="border rounded-xl shadow shadow-gray-300">
-        <div className="flex">
-          <div className=" py-3 px-3">
-            <label>Check in: </label>
-            <input type="date" />
-          </div>
-          <div className=" py-3 px-3 border-l">
-            <label>Check out: </label>
-            <input type="date" />
-          </div>
+      <div className="border rounded-xl shadow shadow-gray-300 mt-4 p-2 flex flex-col sm:flex-row">
+        <div className="mb-2 sm:w-1/2">
+          <label>Check in: </label>
+          <input className="w-full border rounded px-2 py-1" type="date" />
         </div>
-        <div className=" py-3 px-4 border-t">
-          <label>Number of guest: </label>
-          <input type="Number" value={1} />
+        <div className="mb-2 sm:w-1/2 sm:ml-2">
+          <label>Check out: </label>
+          <input className="w-full border rounded px-2 py-1" type="date" />
+        </div>
+        <div className="mb-2">
+          <label>Number of guests: </label>
+          <input
+            className="w-full border rounded px-2 py-1"
+            type="number"
+            value={1}
+          />
         </div>
       </div>
-      <button className="mt-3 bg-primary font-bold text-white px-10 py-2 rounded-2xl shadow shadow-gray-800">
+      <button className="mt-4 bg-primary text-white font-bold px-4 py-2 rounded-2xl shadow shadow-gray-800 w-full">
         Book Now
       </button>
     </div>

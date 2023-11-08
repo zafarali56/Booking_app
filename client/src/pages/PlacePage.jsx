@@ -162,9 +162,8 @@ export default function PlacePage() {
           Show all photos
         </button>
       </div>
-
-      <div className="mt-8 mb-8 grid gap-8 grid-cols-1 md:grid-cols-[2fr_1fr]">
-        <div>
+      <div className="mt-8 mb-8 flex flex-col sm:flex-row md:flex-row lg:flex-row gap-8">
+        <div className="w-full sm:w-auto md:w-auto lg:w-auto">
           <div className="my-4">
             <h2 className="font-bold text-2xl">Description</h2>
             {place.description}
@@ -175,10 +174,11 @@ export default function PlacePage() {
             Maximum number of guests: {place.maxGuests}
           </div>
         </div>
-        <div>
+        <div className="w-full sm:w-auto md:w-auto lg:w-auto">
           <BookingWidget place={place} />
         </div>
       </div>
+
       <div className="bg-white -mx-8 px-8 py-8 pt-8 border-t ">
         <div>
           <h2 className="mt-3 font-semi-bold text-2xl">Extra info</h2>

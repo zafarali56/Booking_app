@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const { user } = useContext(UserContext);
   return (
-    <header className="flex flex-col md:flex-row sm:flex-row items-center justify-between p-4 bg-white">
-      <Link to={"/"} href="" className="flex items-center gap-1">
+    <header className="bg-white p-7 md:flex-row sm:flex-row flex flex-col items-center justify-between">
+      <Link
+        to={"/"}
+        href=""
+        className="flex p-4 items-center text-center gap-2 shrink-0"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -23,6 +27,7 @@ export default function Header() {
 
         <span className="font-bold text-xl">Table Trove</span>
       </Link>
+
       <div className="flex gap-2 border border-gray-300 rounded-full py-2 p-4 shadow-md sm:flex md:flex items-center shadow-grey-300">
         <div className="flex border border-gray-400 rounded-full">
           <div className="p-2 font-bold">Anywhere</div>
