@@ -112,7 +112,7 @@ export default function PlacePage() {
               <div>
                 <img
                   onClick={() => setShowAllPhotos(true)}
-                  className="aspect-square object-cover "
+                  className="aspect-square object-cover  "
                   src={constructImageURL(place.photos[0])}
                   alt=""
                 />
@@ -123,7 +123,7 @@ export default function PlacePage() {
             {place.photos?.[1] && (
               <img
                 onClick={() => setShowAllPhotos(true)}
-                className="aspect-square "
+                className="aspect-square object-cover"
                 src={constructImageURL(place.photos[1])}
                 alt=""
               />
