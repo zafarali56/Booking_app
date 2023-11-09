@@ -119,16 +119,16 @@ export default function PlacePage() {
               </div>
             )}
           </div>
-          <div className="grid ">
+          <div className="">
             {place.photos?.[1] && (
               <img
                 onClick={() => setShowAllPhotos(true)}
-                className="aspect-square object-cover "
+                className="aspect-square "
                 src={constructImageURL(place.photos[1])}
                 alt=""
               />
             )}
-            <div className=" overflow-hidden">
+            <div className="">
               {" "}
               {place.photos?.[2] && (
                 <img
@@ -166,12 +166,15 @@ export default function PlacePage() {
         <div className="w-full sm:w-auto md:w-auto lg:w-auto">
           <div className="my-4">
             <h2 className="font-bold text-2xl">Description</h2>
-            {place.description}
-            Check-in time: {place.checkIn}
+            <pre style={{ whiteSpace: "pre-wrap" }} className="font-sans">
+              {place.description}
+            </pre>
             <br />
-            Check-out time: {place.checkOut}
+            <b>Check-in time: {place.checkIn}</b>
             <br />
-            Maximum number of guests: {place.maxGuests}
+            <b> Check-out time: {place.checkOut}</b>
+            <br />
+            <b> Maximum number of guests: {place.maxGuests}</b>
           </div>
         </div>
         <div className="w-full sm:w-auto md:w-auto lg:w-auto">
@@ -184,7 +187,9 @@ export default function PlacePage() {
           <h2 className="mt-3 font-semi-bold text-2xl">Extra info</h2>
         </div>
         <div className="mb-4 mt-2 text-sm text-gray-700 leading-5">
-          {place.extraInfo}
+          <pre className="font-sans" style={{ whiteSpace: "pre-wrap" }}>
+            {place.extraInfo}
+          </pre>
         </div>
       </div>
     </div>
