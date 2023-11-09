@@ -246,12 +246,8 @@ app.get("/places", async (req, res) => {
   res.json(await Place.find());
 });
 
-if (port) {
-  app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-  });
-}
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 // Start the server
-
-module.exports = app;
