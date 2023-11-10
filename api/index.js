@@ -14,6 +14,7 @@ import fs from "fs";
 //temp
 import { URL, fileURLToPath } from "url";
 import path from "path";
+import Booking from "./models/Booking.js";
 
 const currentModuleURL = new URL(import.meta.url);
 const currentModulePath = fileURLToPath(currentModuleURL);
@@ -244,6 +245,26 @@ app.put("/places", async (req, res) => {
 
 app.get("/places", async (req, res) => {
   res.json(await Place.find());
+});
+
+app.get("/bookings", (req, res) => {
+  const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
+    req.body;
+  Booking.create({
+    place,
+    checkIn,
+    checkOut,
+    numberOfGuests,
+    name,
+    phone,
+    price,
+  })
+    .then((doc) => {
+      res.json(doc);
+    })
+    .catch((err) => {
+      throw err;
+    });
 });
 
 app.listen(port, () => {
