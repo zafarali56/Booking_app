@@ -45,7 +45,7 @@ export default function Header() {
               />
             </svg>
 
-            <div className="p-2 font-semibold custom-hidden">Anywhere</div>
+            <div className="p-2 font-semibold custom-hidden_2">Anywhere</div>
           </div>
 
           <div className="flex items-center border border-gray-500 rounded-full px-2 ">
@@ -64,7 +64,7 @@ export default function Header() {
               />
             </svg>
 
-            <div className="p-2 font-semibold custom-hidden">Any week</div>
+            <div className="p-2 font-semibold custom-hidden_2">Any week</div>
           </div>
 
           <div className="flex items-center border border-gray-500 rounded-full px-2">
@@ -85,7 +85,7 @@ export default function Header() {
               />
             </svg>
 
-            <div className="p-2 font-semibold custom-hidden">Add guests</div>
+            <div className="p-2 font-semibold custom-hidden_2">Add guests</div>
           </div>
 
           <button className="bg-primary text-white p-4 rounded-full">
