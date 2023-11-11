@@ -51,6 +51,16 @@ mongoose
     console.error(err);
   });
 
+function getUserDataFromReq(req) {
+  return new Promise((resolve, reject) => {
+    jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+
+      resolve(userData);
+    });
+  });
+}
+
 // Define your routes
 app.get("/test", (req, res) => {
   res.send("Hello, Express!");
@@ -247,7 +257,8 @@ app.get("/places", async (req, res) => {
   res.json(await Place.find());
 });
 
-app.get("/bookings", (req, res) => {
+app.post("/bookings", async (req, res) => {
+  const userData = await getUserDataFromReq(req);
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     req.body;
   Booking.create({
@@ -258,6 +269,7 @@ app.get("/bookings", (req, res) => {
     name,
     phone,
     price,
+    user: userData.id,
   })
     .then((doc) => {
       res.json(doc);
@@ -265,6 +277,11 @@ app.get("/bookings", (req, res) => {
     .catch((err) => {
       throw err;
     });
+});
+
+app.get("/bookings", async (req, res) => {
+  const userData = await getUserDataFromReq(req);
+  res.json(await Booking.find({ user: userData.id }).populate("place"));
 });
 
 app.listen(port, () => {
