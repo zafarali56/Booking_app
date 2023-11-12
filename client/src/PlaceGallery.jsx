@@ -1,6 +1,8 @@
 import { useState } from "react";
+
 export default function PlaceGallery({ place }) {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
+
   function constructImageURL(imageAddress) {
     let fileName;
 
@@ -15,13 +17,13 @@ export default function PlaceGallery({ place }) {
 
   if (showAllPhotos) {
     return (
-      <div className="absolute bg-white  min-h-screen inset-0">
-        <div className=" flex items-center flex-col p-10 gap-4">
+      <div className="fixed inset-0 bg-white overflow-auto">
+        <div className="flex items-center flex-col p-10 gap-4">
           <div>
             <h2 className="text-4xl font-bold">Photos of {place.title}</h2>
             <button
               onClick={() => setShowAllPhotos(false)}
-              className=" fixed flex left-8 py-2 px-4 bg-gray-300 rounded-2xl shadow shadow-black"
+              className="fixed flex left-8 py-2 px-4 bg-gray-300 rounded-2xl shadow shadow-black"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -41,16 +43,11 @@ export default function PlaceGallery({ place }) {
             </button>
           </div>
           {place?.photos?.length > 0 &&
-            place.photos.map(
-              (
-                photo,
-                index // Add 'index' as the key
-              ) => (
-                <div className="gap-2" key={index}>
-                  <img src={constructImageURL(photo)} alt="" />
-                </div>
-              )
-            )}
+            place.photos.map((photo, index) => (
+              <div className="gap-2" key={index}>
+                <img src={constructImageURL(photo)} alt="" />
+              </div>
+            ))}
         </div>
       </div>
     );
@@ -64,7 +61,7 @@ export default function PlaceGallery({ place }) {
             <div>
               <img
                 onClick={() => setShowAllPhotos(true)}
-                className="aspect-square object-cover  "
+                className="aspect-square object-cover"
                 src={constructImageURL(place.photos[0])}
                 alt=""
               />
@@ -85,7 +82,7 @@ export default function PlaceGallery({ place }) {
             {place.photos?.[2] && (
               <img
                 onClick={() => setShowAllPhotos(true)}
-                className="aspect-square object-cover relative top-2 "
+                className="aspect-square object-cover relative top-2"
                 src={constructImageURL(place.photos[2])}
                 alt=""
               />
@@ -95,7 +92,7 @@ export default function PlaceGallery({ place }) {
       </div>
       <button
         onClick={() => setShowAllPhotos(true)}
-        className=" flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-xl shadow shadow-gray-500"
+        className="flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-xl shadow shadow-gray-500"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

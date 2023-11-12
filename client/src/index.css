@@ -40,3 +40,9 @@ button.primary {
     display: none;
   }
 }
+
+@media (max-width: 435px) {
+  .newLine {
+    flex-direction: column;
+  }
+}

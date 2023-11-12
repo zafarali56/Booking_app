@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { differenceInCalendarDays } from "date-fns";
 import AddressLink from "../AddressLink";
 import PlaceGallery from "../PlaceGallery";
 import BookingDates from "../BookingDates";
@@ -28,8 +29,29 @@ export default function BookingPage() {
       <AddressLink className="my-2 block">{booking.place.address}</AddressLink>
       <div className="bg-gray-200 p-6 my-4 rounded-2xl flex items-center justify-between">
         <div>
-          <h2 className="text-2xl mb-4">Your booking info:</h2>
+          <h2 className="flex items-center text-2xl mb-1 ">Booking info</h2>
 
+          <div className="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-6 "
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+              />
+            </svg>
+            {differenceInCalendarDays(
+              new Date(booking.checkOut),
+              new Date(booking.checkIn)
+            )}
+            {"-Nights"}
+          </div>
           <BookingDates booking={booking} />
         </div>
 
