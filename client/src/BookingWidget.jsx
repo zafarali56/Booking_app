@@ -27,6 +27,11 @@ export default function BookingWidget({ place }) {
       : 0;
 
   const bookThisPlace = async () => {
+    if (!checkIn || !checkOut) {
+      alert("Please select both check-in and check-out dates before booking.");
+      return;
+    }
+
     const response = await axios.post("/bookings", {
       checkIn,
       checkOut,
@@ -97,7 +102,7 @@ export default function BookingWidget({ place }) {
       </div>
       <button
         onClick={bookThisPlace}
-        className="mt-2 bg-primary font-bold text-white px-10 py-2 rounded-2xl shadow"
+        className="mt-2 bg-primary font-bold text-white px-10 py-2 rounded-2xl shadow hover:bg-blue-700"
       >
         Book Now $
         {numberOfNights > 0 && <span>{numberOfNights * place.price}</span>}

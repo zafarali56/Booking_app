@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import BookingWidget from "../BookingWidget";
 import PlaceGallery from "../PlaceGallery";
 import AddressLink from "../AddressLink";
+import Perks from "../Perks";
 
 export default function PlacePage() {
   const { id } = useParams();
   const [place, setPlace] = useState(null);
+  const [selectedPerks, setSelectedPerks] = useState([]);
 
   useEffect(() => {
     if (!id) {
@@ -15,6 +17,7 @@ export default function PlacePage() {
     }
     axios.get(`/places/${id}`).then((response) => {
       setPlace(response.data);
+      setSelectedPerks(response.data.perks || []);
     });
   }, [id]);
 
@@ -54,6 +57,9 @@ export default function PlacePage() {
             {place.extraInfo}
           </pre>
         </div>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-2 md:grid-cols-4">
+        <Perks selected={selectedPerks} onChange={setSelectedPerks} />
       </div>
     </div>
   );
