@@ -38,10 +38,11 @@ app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
 // CORS configuration
+// CORS configuration
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173", // Replace with the correct origin of your frontend
+    origin: ["http://localhost:5173", "https://zafar-table-trove.vercel.app"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     headers: "Content-Type, Authorization",
   })
