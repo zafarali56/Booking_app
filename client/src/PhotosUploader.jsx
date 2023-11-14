@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Image from "./Image";
 
 export default function PhotosUploader({ addedPhotos, onChange }) {
   const [photoLink, setPhotoLink] = useState("");
@@ -54,9 +55,6 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
       <div className="mt-2 grid gap-2 grid-cols-3 md:grid-col-4 lg:grid-cols-6">
         {addedPhotos.length > 0 &&
           addedPhotos.map((link) => {
-            // Split the link by '/' and get the last part (the filename)
-            const filename = link.split("/").pop();
-
             function removePhoto(ev, filename) {
               ev.preventDefault();
               onChange([...addedPhotos.filter((photo) => photo !== filename)]);
@@ -73,9 +71,9 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
 
             return (
               <div className="h-32 flex relative" key={link}>
-                <img
+                <Image
                   className="rounded-2xl w-full object-cover position-center"
-                  src={"http://localhost:4000/uploads/" + filename}
+                  src={link}
                   alt="description"
                 />
                 <button

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AccountNav from "../AccountNav";
 import axios from "axios";
+import Image from "../Image";
 
 export default function PlacesPage() {
   const [places, setPlaces] = useState([]);
@@ -45,20 +46,6 @@ export default function PlacesPage() {
             // Extract the image address and file name
             const imageAddress = place.photos[0];
             console.log("Image Address:", imageAddress);
-            let fileName;
-
-            // Check if the image address contains a specific part
-            if (
-              imageAddress.includes(
-                "/home/zafar/Documents/CODE/MERN_BookingApp/api/uploads"
-              )
-            ) {
-              fileName = imageAddress.split("/").pop();
-            } else {
-              fileName = imageAddress;
-            }
-
-            console.log("File Name:", fileName);
 
             return (
               <div key={index}>
@@ -68,9 +55,9 @@ export default function PlacesPage() {
                 >
                   <div className="flex w-32 h-32 bg-gray-400 grow shrink-0 rounded-xl">
                     {place.photos.length > 0 && (
-                      <img
+                      <Image
                         className="object-cover rounded-2xl"
-                        src={"http://localhost:4000/uploads/" + fileName}
+                        src={imageAddress}
                         alt=""
                       />
                     )}

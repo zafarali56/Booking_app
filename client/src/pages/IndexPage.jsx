@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Image from "../Image";
 
 export default function IndexPage() {
   const [places, setPlaces] = useState([]);
@@ -11,19 +12,6 @@ export default function IndexPage() {
     });
   }, []);
 
-  function constructImageURL(places) {
-    const imageAddress = places.photos[0];
-    let fileName;
-
-    if (imageAddress.includes("/uploads")) {
-      fileName = imageAddress.split("/").pop();
-    } else {
-      fileName = imageAddress;
-    }
-
-    return "http://localhost:4000/uploads/" + fileName;
-  }
-
   return (
     <div className=" mt-10 grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
       {places.length > 0 &&
@@ -31,9 +19,9 @@ export default function IndexPage() {
           <Link to={"/place/" + place._id} key={place._id}>
             <div className="bg-gray-500 mb-1 rounded-2xl flex">
               {place.photos?.[0] && (
-                <img
+                <Image
                   className="cursor-pointer rounded-2xl object-cover aspect-square"
-                  src={constructImageURL(place)}
+                  src={place.photos?.[0]}
                   alt=""
                 />
               )}
