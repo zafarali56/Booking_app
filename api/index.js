@@ -1,4 +1,4 @@
-import express, { json } from "express";
+import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
@@ -32,17 +32,18 @@ const app = express();
 app.setMaxListeners(15); // Set the appropriate number based on your application's needs
 const port = process.env.PORT || 4000;
 
-// ... (rest of your code)
-// Use process.env.PORT if available, default to 4000
-
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
+
+// CORS configuration
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173", // Replace with the correct origin of your frontend
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    headers: "Content-Type, Authorization",
   })
 );
 
@@ -117,7 +118,9 @@ app.post("/api/login", async (req, res) => {
         {},
         (err, token) => {
           if (err) throw err;
-          res.cookie("token", token).json({ user: userDocs });
+          res
+            .cookie("token", token, { httpOnly: true, sameSite: "lax" })
+            .json({ user: userDocs });
         }
       );
     } else {
@@ -143,7 +146,7 @@ app.get("/api/profile", (req, res) => {
 });
 
 app.post("/api/logout", (req, res) => {
-  res.cookie("token", "").json(true);
+  res.clearCookie("token").json(true);
 });
 
 app.post("/api/upload-by-link", async (req, res) => {
@@ -307,5 +310,3 @@ app.get("/api/bookings", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
-// Start the server
