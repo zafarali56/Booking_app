@@ -11,12 +11,12 @@ export default function ProfilePage() {
   let { subpage } = useParams();
 
   if (subpage === undefined) {
-    subpage = "/api/profile";
+    subpage = "profile";
   }
 
   async function logout() {
-    await axios.post("/api/logout");
-    setRedirect("/api/");
+    await axios.post("/logout");
+    setRedirect("/");
     setUser(null);
   }
 
@@ -25,7 +25,7 @@ export default function ProfilePage() {
   }
 
   if (ready && !user && !redirect) {
-    return <Navigate to={"/api/login"} />;
+    return <Navigate to={"/login"} />;
   }
 
   if (redirect) {
@@ -34,7 +34,7 @@ export default function ProfilePage() {
   return (
     <div>
       <AccountNav />
-      {subpage === "/api/profile" && (
+      {subpage === "profile" && (
         <div className="mt-4 text-center max-w-lg mx-auto">
           logged in as {user.first} {user.last} <br />({user.email})
           <button
@@ -46,7 +46,7 @@ export default function ProfilePage() {
           </button>
         </div>
       )}
-      {subpage === "/api/places" && <PlacesPage />}
+      {subpage === "places" && <PlacesPage />}
     </div>
   );
 }

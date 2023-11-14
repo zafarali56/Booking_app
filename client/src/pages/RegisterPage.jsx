@@ -10,7 +10,7 @@ export default function RegisterPage() {
   async function registerUser(ev) {
     ev.preventDefault();
     try {
-      await axios.post("/api/register", {
+      await axios.post("/register", {
         first,
         last,
         email,

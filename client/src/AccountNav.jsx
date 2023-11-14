@@ -4,7 +4,7 @@ export default function AccountNav() {
   const { pathname } = useLocation();
   let subpage = pathname.split("/")?.[2];
   if (subpage == undefined) {
-    subpage = "/api/profile";
+    subpage = "profile";
   }
   function linkClasses(type = null) {
     let classes = "inline-flex gap-1 py-2 px-6 rounded-full ";
@@ -19,7 +19,7 @@ export default function AccountNav() {
   return (
     <nav className=" flex justify-center mt-8 gap-2">
       <div>
-        <Link className={linkClasses("/api/profile")} to={"/api/account"}>
+        <Link className={linkClasses("profile")} to={"/account"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -39,10 +39,7 @@ export default function AccountNav() {
       </div>
 
       <div>
-        <Link
-          className={linkClasses("/api/bookings")}
-          to={"/api/account/bookings"}
-        >
+        <Link className={linkClasses("bookings")} to={"/account/bookings"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -61,7 +58,7 @@ export default function AccountNav() {
         </Link>
       </div>
       <div>
-        <Link className={linkClasses("/api/places")} to={"/api/account/places"}>
+        <Link className={linkClasses("places")} to={"/account/places"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
