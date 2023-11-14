@@ -13,7 +13,7 @@ export default function LoginPage() {
   async function handleLoginSubmit(ev) {
     ev.preventDefault();
     try {
-      const response = await axios.post("/login", { email, password });
+      const response = await axios.post("/api/login", { email, password });
 
       if (response.data && response.data.user) {
         // Assuming that your user data is structured with a 'user' property
