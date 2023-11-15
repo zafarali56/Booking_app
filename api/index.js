@@ -304,6 +304,10 @@ app.get("/api/bookings", async (req, res) => {
   res.json(await Booking.find({ user: userData.id }).populate("place"));
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/index.html"));
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
