@@ -54,14 +54,26 @@ export default function BookingPage() {
           </div>
           <BookingDates booking={booking} />
         </div>
-
         <div
           className=" bg-primary rounded-xl p-2 text-white
         "
         >
           <div>Total price:</div>
 
-          <div className="text-3xl">${booking.place.price}</div>
+          <div className="text-3xl">
+            ${" "}
+            {differenceInCalendarDays(
+              new Date(booking.checkOut),
+              new Date(booking.checkIn)
+            ) > 0 && (
+              <span>
+                {differenceInCalendarDays(
+                  new Date(booking.checkOut),
+                  new Date(booking.checkIn)
+                ) * booking.place.price}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
