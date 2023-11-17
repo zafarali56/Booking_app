@@ -51,13 +51,14 @@ export default function BookingWidget({ place }) {
   }
 
   return (
-    <div className="grid bg-gray-100 shadow p-4  rounded-xl">
+    <div className="grid bg-gray-300 shadow p-4  rounded-xl">
       <div className="text-2xl">Price: {place.price}$ / per night</div>
       <div className="border rounded-xl shadow">
         <div className="flex newLine">
-          <div className="py-3 px-3">
+          <div className="py-3 px-3 ">
             <label>Check in: </label>
             <input
+              className="rounded-xl p-1"
               type="date"
               value={checkIn}
               onChange={(ev) => setCheckIn(ev.target.value)}
@@ -66,6 +67,7 @@ export default function BookingWidget({ place }) {
           <div className="py-3 px-3">
             <label>Check out: </label>
             <input
+              className="rounded-xl p-1"
               type="date"
               value={checkOut}
               onChange={(ev) => setCheckOut(ev.target.value)}
