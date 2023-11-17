@@ -54,7 +54,9 @@ export default function PlacePage() {
           </div>
         </div>
       </div>
-
+      <div className="grid sm:grid-cols-2 gap-2 mt-2 mb-2 md:grid-cols-4">
+        <Perks selected={selectedPerks} />
+      </div>
       <div className="bg-white -mx-8 px-8 py-8 pt-8 border-t ">
         <div>
           <h2 className="mt-3 font-semi-bold text-2xl">Extra info</h2>
@@ -64,9 +66,6 @@ export default function PlacePage() {
             {place.extraInfo}
           </pre>
         </div>
-      </div>
-      <div className="grid sm:grid-cols-2 gap-2 md:grid-cols-4">
-        <Perks selected={selectedPerks} />
       </div>
     </div>
   );
