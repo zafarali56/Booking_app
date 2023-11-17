@@ -128,7 +128,7 @@ export default function Header() {
         </svg>
 
         {!!user && (
-          <div className="ml-1 custom-hidden">
+          <div className="ml-1 mr-1 custom-hidden font-bold">
             {user.first} {user.last}
           </div>
         )}
