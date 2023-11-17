@@ -27,11 +27,11 @@ export default function BookingPage() {
     <div className="my-8">
       <h1 className="text-3xl font-semibold">{booking.place.title}</h1>
       <AddressLink className="my-2 block">{booking.place.address}</AddressLink>
-      <div className="bg-gray-200 p-6 my-4 rounded-2xl flex items-center justify-between">
+      <div className=" bg-gray-200 p-2 my-2 rounded-2xl items-center newLine ">
         <div>
-          <h2 className="flex items-center text-2xl mb-1 ">Booking info</h2>
+          <h2 className=" items-center text-2xl mb-1 ">Booking info</h2>
 
-          <div className="flex">
+          <div className="flex ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -58,21 +58,23 @@ export default function BookingPage() {
           className=" bg-primary rounded-xl p-2 text-white
         "
         >
-          <div>Total price:</div>
+          <div className="flex gap-2 justify-between items-center">
+            <h1 className="font-bold text-2xl">Total price:</h1>
 
-          <div className="text-3xl">
-            ${" "}
-            {differenceInCalendarDays(
-              new Date(booking.checkOut),
-              new Date(booking.checkIn)
-            ) > 0 && (
-              <span>
-                {differenceInCalendarDays(
-                  new Date(booking.checkOut),
-                  new Date(booking.checkIn)
-                ) * booking.place.price}
-              </span>
-            )}
+            <div className="text-3xl font-bold">
+              ${" "}
+              {differenceInCalendarDays(
+                new Date(booking.checkOut),
+                new Date(booking.checkIn)
+              ) > 0 && (
+                <span>
+                  {differenceInCalendarDays(
+                    new Date(booking.checkOut),
+                    new Date(booking.checkIn)
+                  ) * booking.place.price}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>

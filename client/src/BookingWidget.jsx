@@ -51,23 +51,25 @@ export default function BookingWidget({ place }) {
   }
 
   return (
-    <div className="grid bg-gray-300 shadow p-4  rounded-xl">
-      <div className="text-2xl">Price: {place.price}$ / per night</div>
-      <div className="border rounded-xl shadow">
-        <div className="flex newLine">
-          <div className="py-3 px-3 ">
+    <div className="grid  shadow shadow-black p-2  rounded-xl">
+      <div className=" text-center text-2xl">
+        Price: {place.price}$ / per night
+      </div>
+      <div className="border border-gray-300 rounded-xl shadow">
+        <div className="flex items-center newLine">
+          <div className="py-1 px-1 ">
             <label>Check in: </label>
             <input
-              className="rounded-xl p-1"
+              className="rounded-xl p-1  border border-gray-500"
               type="date"
               value={checkIn}
               onChange={(ev) => setCheckIn(ev.target.value)}
             />
           </div>
-          <div className="py-3 px-3">
+          <div className=" px-1">
             <label>Check out: </label>
             <input
-              className="rounded-xl p-1"
+              className="rounded-xl p-1 border border-gray-500"
               type="date"
               value={checkOut}
               onChange={(ev) => setCheckOut(ev.target.value)}
@@ -75,36 +77,39 @@ export default function BookingWidget({ place }) {
           </div>
         </div>
 
-        <div className="py-3 px-3 border-t">
+        <div className=" px-1 border-t">
           <label>Number of guests: </label>
           <input
             type="number"
             value={numberOfGuests}
             onChange={(ev) => setNumberOfGuests(ev.target.value)}
+            className="border border-gray-400"
           />
         </div>
 
-        <div className="py-3 px-3 border-t">
+        <div className=" px-1 border-t">
           <label>Full name: </label>
           <input
             type="text"
             value={name}
             onChange={(ev) => setName(ev.target.value)}
+            className="border border-gray-400"
           />
         </div>
 
-        <div className="py-3 px-3 border-t">
+        <div className="px-1 border-t">
           <label>Phone Number: </label>
           <input
             type="tel"
             value={phone}
             onChange={(ev) => setPhone(ev.target.value)}
+            className="border border-gray-400"
           />
         </div>
       </div>
       <button
         onClick={bookThisPlace}
-        className="mt-2 bg-primary font-bold text-white px-10 py-2 rounded-2xl shadow hover:bg-blue-700"
+        className="mt-1 bg-primary font-bold text-white px-5 py-2 rounded-2xl shadow hover:bg-blue-700"
       >
         Book Now $
         {numberOfNights > 0 && <span>{numberOfNights * place.price}</span>}

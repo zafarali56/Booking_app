@@ -28,13 +28,23 @@ export default function PlacePage() {
       <h1 className="text-3xl font-semibold">{place.title}</h1>
       <AddressLink>{place.address}</AddressLink>
       <PlaceGallery place={place} />
-      <div className="mt-8 mb-8 flex flex-col sm:flex-row md:flex-row lg:flex-row gap-8">
-        <div className="w-full sm:w-auto md:w-auto lg:w-auto">
-          <div className="my-4">
-            <h2 className="font-bold text-2xl">Description</h2>
-            <pre style={{ whiteSpace: "pre-wrap" }} className="font-serif">
-              {place.description}
-            </pre>
+
+      <div className="mt-4">
+        <div className="sm:w-auto md:w-auto lg:w-auto">
+          <div>
+            <div className="flex gap-5 newLine ">
+              <div className="">
+                <BookingWidget place={place} />
+              </div>
+
+              <div>
+                <h2 className="font-bold text-2xl">Description</h2>
+                <pre style={{ whiteSpace: "pre-wrap" }} className="font-serif">
+                  {place.description}
+                </pre>
+              </div>
+            </div>
+
             <br />
             <b>Check-in time: {place.checkIn}</b>
             <br />
@@ -42,9 +52,6 @@ export default function PlacePage() {
             <br />
             <b> Maximum number of guests: {place.maxGuests}</b>
           </div>
-        </div>
-        <div className="w-full sm:w-auto md:w-auto lg:w-auto">
-          <BookingWidget place={place} />
         </div>
       </div>
 
