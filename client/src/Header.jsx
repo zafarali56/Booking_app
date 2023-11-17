@@ -98,13 +98,13 @@ export default function Header() {
 
       <Link
         to={user ? "/account" : "/login"}
-        className="flex gap-1  border border-gray-300 rounded-full py-2 p-3 shadow-md items-center shadow-grey-300"
+        className="flex border border-gray-300 rounded-full py-2 px-2 shadow-md items-center shadow-grey-300"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-6 h-5 custom-hidden"
+          className="w-6 h-6 mr-2 ml-2 custom-hidden"
         >
           <path
             fillRule="evenodd"
@@ -118,7 +118,7 @@ export default function Header() {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-6 h-5"
+          className="w-6 h-6"
         >
           <path
             fillRule="evenodd"
@@ -128,7 +128,7 @@ export default function Header() {
         </svg>
 
         {!!user && (
-          <div className="custom-hidden">
+          <div className="ml-1 custom-hidden">
             {user.first} {user.last}
           </div>
         )}
