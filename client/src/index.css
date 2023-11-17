@@ -46,3 +46,8 @@ button.primary {
     flex-direction: column;
   }
 }
+@media (max-width: 376px) {
+  .newLine2 {
+    flex-direction: column;
+  }
+}
