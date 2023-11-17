@@ -26,9 +26,9 @@ export default function BookingsPage() {
               key={index}
               className="flex gap-2 my-8 bg-gray-200 rounded-2xl "
             >
-              <div className=" w-48">
+              <div className="mt-5 ml-4 relative w-20 h-20 aspect-square  object-cover ">
                 <PlaceImg
-                  className="rounded-xl w-full h-full object-cover transform scale-100 hover:scale-125 transition-transform duration-300"
+                  className="aspect-square overflow-hidden rounded-xl w-full object-cover "
                   place={booking.place}
                 />
               </div>
