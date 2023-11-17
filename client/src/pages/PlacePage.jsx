@@ -66,7 +66,7 @@ export default function PlacePage() {
         </div>
       </div>
       <div className="grid sm:grid-cols-2 gap-2 md:grid-cols-4">
-        <Perks selected={selectedPerks} onChange={setSelectedPerks} />
+        <Perks selected={selectedPerks} />
       </div>
     </div>
   );
