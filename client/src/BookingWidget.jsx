@@ -28,7 +28,7 @@ export default function BookingWidget({ place }) {
 
   const bookThisPlace = async () => {
     if (!user) {
-      alert("You need to be logged in to book the place");
+      alert("Please! login to book this place");
       return;
     }
     if (!checkIn || !checkOut) {
@@ -61,19 +61,19 @@ export default function BookingWidget({ place }) {
       </div>
       <div className=" rounded-xl">
         <div className="flex newLine ">
-          <div className="py-1 px-1 ">
+          <div className="p-1">
             <label>Check in: </label>
             <input
-              className="rounded-xl p-1  border border-gray-500"
+              className="rounded-xl px-1  border border-gray-500"
               type="date"
               value={checkIn}
               onChange={(ev) => setCheckIn(ev.target.value)}
             />
           </div>
-          <div className=" py-1 px-1 ">
+          <div className="p-1 ">
             <label>Check out: </label>
             <input
-              className="rounded-xl p-1 border border-gray-500"
+              className="rounded-xl px-1 border border-gray-500"
               type="date"
               value={checkOut}
               onChange={(ev) => setCheckOut(ev.target.value)}
@@ -81,39 +81,32 @@ export default function BookingWidget({ place }) {
           </div>
         </div>
 
-        <div className=" px-1 border-t">
-          <label>Number of guests: </label>
-          <input
-            type="number"
-            value={numberOfGuests}
-            onChange={(ev) => setNumberOfGuests(ev.target.value)}
-            className="border border-gray-400"
-          />
-        </div>
+        <input
+          type="number"
+          placeholder="No of guests"
+          onChange={(ev) => setNumberOfGuests(ev.target.value)}
+          className="border border-gray-400"
+        />
 
-        <div className=" px-1 border-t">
-          <label>Full name: </label>
-          <input
-            type="text"
-            value={name}
-            onChange={(ev) => setName(ev.target.value)}
-            className="border border-gray-400"
-          />
-        </div>
+        <input
+          type="text"
+          value={name}
+          placeholder="Full name"
+          onChange={(ev) => setName(ev.target.value)}
+          className="border border-gray-400"
+        />
 
-        <div className="px-1 border-t">
-          <label>Phone Number: </label>
-          <input
-            type="tel"
-            value={phone}
-            onChange={(ev) => setPhone(ev.target.value)}
-            className="border border-gray-400"
-          />
-        </div>
+        <input
+          type="tel"
+          value={phone}
+          placeholder="Phone Number"
+          onChange={(ev) => setPhone(ev.target.value)}
+          className="border border-gray-400"
+        />
       </div>
       <button
         onClick={bookThisPlace}
-        className="mt-1 bg-primary font-bold text-white px-5 py-2 rounded-2xl shadow hover:bg-blue-700"
+        className=" bg-primary mb-3 font-bold py-2 text-white rounded-2xl shadow hover:bg-blue-700"
       >
         Book Now $
         {numberOfNights > 0 && <span>{numberOfNights * place.price}</span>}

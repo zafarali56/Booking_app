@@ -32,11 +32,10 @@ export default function PlacePage() {
       <div className="mt-4">
         <div className="sm:w-auto md:w-auto lg:w-auto">
           <div>
-            <div className="flex gap-5 newLine ">
+            <div className=" flex gap-3 newLine ">
               <div className="">
                 <BookingWidget place={place} />
               </div>
-
               <div>
                 <h2 className="font-bold text-2xl">Description</h2>
                 <pre style={{ whiteSpace: "pre-wrap" }} className="font-sans">
