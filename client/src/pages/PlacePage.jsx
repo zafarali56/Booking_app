@@ -39,7 +39,7 @@ export default function PlacePage() {
 
               <div>
                 <h2 className="font-bold text-2xl">Description</h2>
-                <pre style={{ whiteSpace: "pre-wrap" }} className="font-serif">
+                <pre style={{ whiteSpace: "pre-wrap" }} className="font-sans">
                   {place.description}
                 </pre>
               </div>
@@ -62,7 +62,7 @@ export default function PlacePage() {
           <h2 className="mt-3 font-semi-bold text-2xl">Extra info</h2>
         </div>
         <div className="mb-4 mt-2 text-sm text-gray-700 leading-5">
-          <pre className="font-serif" style={{ whiteSpace: "pre-wrap" }}>
+          <pre className="font-sans" style={{ whiteSpace: "pre-wrap" }}>
             {place.extraInfo}
           </pre>
         </div>

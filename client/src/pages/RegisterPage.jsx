@@ -7,8 +7,15 @@ export default function RegisterPage() {
   const [last, setLast] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   async function registerUser(ev) {
     ev.preventDefault();
+
+    if (!first || !last || !email || !password) {
+      alert("Please fill in all the fields.");
+      return;
+    }
+
     try {
       await axios.post("/register", {
         first,
@@ -18,7 +25,7 @@ export default function RegisterPage() {
       });
       alert("Congratulations, You are registered");
     } catch (e) {
-      alert("Registration failed! please try again later.");
+      alert("Registration failed! Please try again later.");
     }
   }
 

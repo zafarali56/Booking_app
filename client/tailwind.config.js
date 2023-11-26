@@ -6,7 +6,10 @@ export default {
       colors: {
         primary: "#2596be",
       },
+      fontFamily: {
+        sans: ["Nunito", "sans-serif"],
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
