@@ -45,18 +45,20 @@ export default function PlacesPage() {
           places.map((place, index) => {
             // Extract the image address and file name
             const imageAddress = place.photos[0];
-            console.log("Image Address:", imageAddress);
 
             return (
-              <div key={index}>
+              <div
+                key={index}
+                className="flex gap-2 my-8 bg-gray-200 rounded-2xl"
+              >
                 <Link
                   to={"/account/places/" + place._id}
-                  className="flex cursor-pointer gap-4 bg-gray-100 rounded-xl p-5"
+                  className="flex cursor-pointer gap-4 bg-gray-200 rounded-xl px-2 py-1"
                 >
-                  <div className="flex w-32 h-32 bg-gray-400 grow shrink-0 rounded-xl">
+                  <div className="mt-2 ml-1 relative w-20 h-20 aspect-square  object-cover">
                     {place.photos.length > 0 && (
                       <Image
-                        className="object-cover rounded-2xl"
+                        className="aspect-square overflow-hidden rounded-xl w-full object-cover"
                         src={imageAddress}
                         alt=""
                       />
@@ -64,8 +66,11 @@ export default function PlacesPage() {
                   </div>
 
                   <div className="grow-0 shrink">
-                    <h2 className="text-xl ">{place.title}</h2>
-                    <p className="text-sm mt-2">{place.description}</p>
+                    <h2 className="text-xl font-bold ">{place.title}</h2>
+                    <p className="text-sm mt-2 font-bold">{place.address}</p>
+                    <p className="">{place.price} $</p>
+                    <p className="">Check In: {place.checkIn}</p>
+                    <p className="">Check Out: {place.checkOut}</p>
                   </div>
                 </Link>
               </div>
