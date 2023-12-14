@@ -29,9 +29,7 @@ export default function IndexPage() {
             <h2 className="text-md truncate font-bold leading-5">
               {place.title}
             </h2>
-            <h3 className="font-thin font-serif text-gray-600">
-              {place.address}
-            </h3>
+            <h3 className="text-sm text-gray-600">{place.address}</h3>
             <div className="mt-2">
               <span className="font-bold">{place.price}</span>$ Per night
             </div>
