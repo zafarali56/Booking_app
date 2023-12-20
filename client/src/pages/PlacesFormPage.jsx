@@ -103,6 +103,7 @@ export default function PlacesFormPage() {
           type="text"
           placeholder="Ex: My lovely apartment"
           style={{ width: "100%" }}
+          className="py-2"
         />
         {preInput("Address", "Address of the place")}
         <input
@@ -110,6 +111,7 @@ export default function PlacesFormPage() {
           value={address}
           onChange={(ev) => setAddress(ev.target.value)}
           placeholder="Address"
+          className="py-2"
         />
         {preInput("Photos", "High-quality/The more the better/Detailed")}
         <PhotosUploader addedPhotos={addedPhotos} onChange={setAddedPhotos} />

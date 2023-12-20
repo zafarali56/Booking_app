@@ -10,7 +10,7 @@ input[type="LastName"],
 input[type="number"],
 input[type="tel"],
 textarea {
-  @apply w-full border my-2 py-2 px-3 rounded-3xl;
+  @apply w-full border my-2 px-3 rounded-3xl;
 }
 
 textarea {
@@ -44,5 +44,12 @@ button.primary {
 @media (max-width: 435px) {
   .newLine {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 660px) {
+  .customPadding {
+    padding-left: 1rem;
+    padding-right: 2rem;
   }
 }

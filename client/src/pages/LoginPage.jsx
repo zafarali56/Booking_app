@@ -44,12 +44,14 @@ export default function LoginPage() {
             placeholder="your@email.com"
             value={email}
             onChange={(ev) => setEmail(ev.target.value)}
+            className="py-2"
           />
           <input
             type="Password"
             placeholder="password"
             value={password}
             onChange={(ev) => setPassword(ev.target.value)}
+            className="py-2"
           />
           <button className="primary  hover:bg-blue-700 font-bold ">
             Login

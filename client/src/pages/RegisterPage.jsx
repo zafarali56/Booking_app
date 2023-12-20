@@ -42,24 +42,28 @@ export default function RegisterPage() {
             placeholder="First Name"
             value={first}
             onChange={(ev) => setFirst(ev.target.value)}
+            className="py-2"
           />
           <input
             type="text"
             placeholder="Last Name"
             value={last}
             onChange={(ev) => setLast(ev.target.value)}
+            className="py-2"
           />
           <input
             type="email"
             placeholder="your@email.com"
             value={email}
             onChange={(ev) => setEmail(ev.target.value)}
+            className="py-2"
           />
           <input
             type="password"
             placeholder="Create password"
             value={password}
             onChange={(ev) => setPassword(ev.target.value)}
+            className="py-2"
           />
 
           <button className="primary">Register</button>

@@ -13,7 +13,7 @@ const placeSchema = new mongoose.Schema({
   maxGuests: Number,
   price: Number,
 });
-
+placeSchema.index({ title: "text", address: "text" });
 const PlaceModel = mongoose.model("Place", placeSchema);
 
 export default PlaceModel;
